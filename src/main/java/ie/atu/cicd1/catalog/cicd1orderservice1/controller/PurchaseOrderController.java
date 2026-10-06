@@ -1,5 +1,5 @@
 package ie.atu.cicd1.catalog.cicd1orderservice1.controller;
-
+import ie.atu.cicd1.catalog.cicd1orderservice1.client.DTO.ProductResponse;
 import ie.atu.cicd1.catalog.cicd1orderservice1.model.PurchaseOrder;
 import ie.atu.cicd1.catalog.cicd1orderservice1.service.PurchaseOrderService;
 import org.springframework.http.HttpStatus;
@@ -27,4 +27,12 @@ public class PurchaseOrderController {
     public PurchaseOrder create(@RequestBody PurchaseOrder order) {
         return service.create(order);
     }
+
+    @GetMapping("/test-catalog/{productId}")
+    public ProductResponse testCatalogConnection(
+            @PathVariable Long productId) {
+        return service.testCatalogConnection(productId);
+    }
+
+
 }
