@@ -2,7 +2,9 @@ package ie.atu.cicd1.catalog.cicd1orderservice1.service;
 
 import ie.atu.cicd1.catalog.cicd1orderservice1.model.PurchaseOrder;
 import ie.atu.cicd1.catalog.cicd1orderservice1.repository.PurchaseOrderRepository;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Service;
+import ie.atu.cicd1.catalog.cicd1orderservice1.client.CatalogClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +13,10 @@ import java.util.List;
 public class PurchaseOrderService {
 
     private final PurchaseOrderRepository repository;
-
-    public PurchaseOrderService(PurchaseOrderRepository repository) {
+    private final CatalogClient catalogClient;
+    public PurchaseOrderService(PurchaseOrderRepository repository, CatalogClient catalogClient) {
         this.repository = repository;
+        this.catalogClient = catalogClient;
     }
 
     public List<PurchaseOrder> getAll() {
@@ -25,4 +28,6 @@ public class PurchaseOrderService {
         return repository.save(order);
 
     }
+
+
 }
